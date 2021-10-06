@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
+:root {
+  --val-baseline:		10px;
 }
+.blue-background-class {
+  background-color: #C8EBFB;
+}
+/* Typography */
+strong {font-weight: 700;}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Layout */
+.absolute {position: absolute;}
+.relative {position: relative;}
+.hidden {display: none;}
+.scroll {overflow:scroll}
+.z99 {z-index: 99;}
+.flex {display: flex;}
+.flex-row {flex-direction: row;}
+.flex-column {flex-direction: column;}
+.flex-vert-center {align-items: center;}
+.flex-horz-center {justify-items: center;}
+.flex-center {align-items: center;justify-items: center;}
+.flex-end {justify-content: flex-end;}
+.grid {display: grid;}
+.grid-center {place-items: center;}
+.right {float: right;}
+.w-100 {width: 100%;}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* Micro Clearfix  */
+.cf:before, .cf:after { content: " "; display: table; }
+.cf:after { clear: both; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Margins */
+.mx-auto {margin: 0 auto;}
+.mt-0 {margin-top:0}
+.mb-0 {margin-bottom:0}
+.mr-small {margin-right: calc(var(--val-baseline) / 2)}
+.mr-medium {margin-right: var(--val-baseline)}
+.ml-large {margin-left: calc(var(--val-baseline) * 2)}
+.mb-small {margin-bottom: calc(var(--val-baseline) / 2)}
+.mb-medium {margin-bottom: calc(var(--val-baseline))}
+.mt-medium {margin-top: var(--val-baseline)}
 
-.App-link {
-  color: #61dafb;
-}
+/* Padding */
+.pa-medium {padding: var(--val-baseline)}
+.pa-large {padding: calc(var(--val-baseline) * 2)}
+.py-large {padding-left: calc(var(--val-baseline) * 2);padding-right: calc(var(--val-baseline) * 2)}
+.pr-large {padding-right: calc(var(--val-baseline) * 2)}
+.pr-medium {padding-right: var(--val-baseline)}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Decorators */
+.border {border-radius: 4px;border: gray solid 1px;}
+h4 {color: #000;}
+
+/* Buttons */
+.btn-clone {background-color: #8f4874;}
+.btn-clone:hover {background-color: #662c50;}
+.btn-orange {background-color: #ff9800;}
+.btn-orange:hover {background-color: #b06a02;}
+
+/* Custom */
+.dl-guidelines {width: 100%;}
+.item-section {width: 100%;}
+.item-header {background-color: #efefef; border-radius: 4px;}
+.action-remove {cursor: pointer;}
+.guide-elements .section-actions span,
+.action-select span {display: none;}
+.guide-builder .item-section.remove {display: none;}
+.add-section, .add-section-last {opacity: 0;width: 100%;height: 10px;margin-top: -75px;right:0px;overflow: visible;}
+.add-section-last {margin-top: 75px;}
+.item-section-active .item-header:hover .add-section, .item-section-active .item-header .add-section.active {display: grid;opacity: 1;}
+.item-section-active .item-header .add-section .fa-plus-circle {transition: transform .3s ease; transform:rotate(0deg);z-index: 100;}
+.item-section-active .item-header .add-section.active .fa-plus-circle {transform:rotate(45deg);}
+.action-select .fa-square,
+.action-select .fa-check-square,
+.add-section .fa-square,
+.add-section .fa-check-square,
+.add-section .fa-plus-circle {font-size:2em}
+.action-select a.hidden.active {display: block!important;}
+.add-section > .fa {color: gray;}
+
+.guide-elements .item-section {transition: all 1s ease-in-out; max-height: 52px;overflow: hidden;}
+.guide-elements .item-section.active {max-height: 1000px;}
+
+/* Create new section */
+#new-section-content {min-height: 200px;border:solid 1px #D8D8D8}
+
+/* Section Bubble: to add new section inline */
+.sections-bubble {position: absolute;top: 0px;left:calc(50% - 350px);transform:translateX(50%); background: white;max-width: 90vw;min-width:350px;padding: 20px;border-radius: 8px;box-shadow: 0 0 10px 6px rgb(0 0 0 / 10%);opacity:0;transition:opacity .5s ease}
+.sections-bubble.active {opacity:1}
+.sections-bubble-content {height: 300px;overflow: scroll;}
+.section-bubble .fa-plus {color: white;font-size:12px}
+
+/* Drag and Drop */
+.blue-background-class {background-color: #C8EBFB;}
+.item-section.sortable-drag .item-content {background-color: #fff!important;}
+.sortable-fallback { opacity: .9 !important }
+
+.dl-table-responsive-content.contact-grid > tbody tr td.col-actions {width: 150px;}
+.dl-table-responsive-content > thead > tr > th:first-child, .dl-table-responsive-content > tbody > tr > td:first-child {display: table-cell;width: 20px;}
