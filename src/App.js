@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Guidelines from "./Guidelines";
-import Guide from "./Guide";
+import Guide from "./Guide/Guide";
 import "./App.css";
 
 function App() {
