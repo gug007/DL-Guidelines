@@ -1,6 +1,6 @@
 import React from "react";
 
-const guidelines = [
+const guidelinesList = [
   {
     id: 0,
     title: "Foo Guidelines",
@@ -19,7 +19,7 @@ const guidelines = [
   },
 ];
 
-export default function Guidelines() {
+export default function GuidelinesList() {
   return (
     <div id="guidelines-table" className="w-100 pr-large flex flex-column">
       <div className="dl-table-responsive">
@@ -36,7 +36,7 @@ export default function Guidelines() {
             </tr>
           </thead>
           <tbody>
-            {guidelines.map((guide) => (
+            {guidelinesList.map((guide) => (
               <tr key={guide.id}>
                 <td className="col-number" data-title="#">
                   {guide.id}
