@@ -85,6 +85,10 @@ export default function Guide({ addToGuidelines }) {
     setSelected([]);
   };
 
+  const selectAll = () => {
+    setSelected(availableSections.map((v) => v.id));
+  };
+
   return (
     <Container>
       <p>{instructionsStepOne}</p>
@@ -95,7 +99,7 @@ export default function Guide({ addToGuidelines }) {
             <i className="fa fa-check" aria-hidden="true" /> Deselect All
           </a>
         ) : (
-          <a className="btn btn-default">
+          <a className="btn btn-default" onClick={selectAll}>
             <i className="fa fa-check" aria-hidden="true" /> Select All
           </a>
         )}
