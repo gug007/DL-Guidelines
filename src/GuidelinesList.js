@@ -1,6 +1,8 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 export default function GuidelinesList({ list }) {
+  const history = useHistory();
   return (
     <div id="guidelines-table" className="w-100 pr-large flex flex-column">
       <div className="dl-table-responsive">
@@ -44,6 +46,7 @@ export default function GuidelinesList({ list }) {
                       title="Edit"
                       role="button"
                       tabIndex="0"
+                      onClick={() => history.push(`/${guide.id}`)}
                     >
                       <i className="fa fa-pencil" aria-hidden="true" />
                       <span>edit</span>
