@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import GuidelinesList from "./GuidelinesList";
 import GuideForm from "./GuideForm";
 import Container from "./Container";
-import "./App.css";
 
 const instructionsStepZero = "Step Zero: Lorem ipsum...";
 
-export default function Guidelines() {
+export default function Guide() {
   const [newGuide, setNewGuide] = useState(null);
 
   return (

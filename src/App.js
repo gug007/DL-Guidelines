@@ -1,13 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Guidelines from "./Giudelines";
+import Guidelines from "./Guidelines";
+import Guide from "./Guide";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/:id">123</Route>
+        <Route path="/:id">
+          <Guide />
+        </Route>
         <Route path="/">
           <Guidelines />
         </Route>

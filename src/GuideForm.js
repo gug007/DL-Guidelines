@@ -1,11 +1,14 @@
-export default function GuideForm({ onClose }) {
+import { useState } from "react";
+
+export default function GuideForm({ onSave, onClose }) {
+  const [value, setValue] = useState("");
   return (
     <div className="create-new-guide pa-small pr-large">
       <form>
         <div className="form-group input-field">
           <div className="cf mb-small">
             <label htmlFor="new-guide-name">Guide Title</label>
-            <a className="btn btn-primary right">
+            <a className="btn btn-primary right" onClick={() => onSave(value)}>
               <i className="fa fa-close" aria-hidden="true" /> Save
             </a>
             <a
@@ -19,6 +22,8 @@ export default function GuideForm({ onClose }) {
             </a>
           </div>
           <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
             type="text"
             name="new-guide-name"
             className="form-control input-default"

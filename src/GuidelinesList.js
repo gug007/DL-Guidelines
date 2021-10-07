@@ -1,25 +1,6 @@
 import React from "react";
 
-const guidelinesList = [
-  {
-    id: 0,
-    title: "Foo Guidelines",
-    createdDate: "August 10, 2021",
-    modifiedDate: "August 24, 2021",
-    createdBy: "Evan Krow",
-    modifiedBy: "Catherine Krow",
-  },
-  {
-    id: 1,
-    title: "Bar Guidelines",
-    createdDate: "July 10, 2021",
-    modifiedDate: "September 4, 2021",
-    createdBy: "Kooba Boo",
-    modifiedBy: "Miley Krow",
-  },
-];
-
-export default function GuidelinesList() {
+export default function GuidelinesList({ list }) {
   return (
     <div id="guidelines-table" className="w-100 pr-large flex flex-column">
       <div className="dl-table-responsive">
@@ -36,7 +17,7 @@ export default function GuidelinesList() {
             </tr>
           </thead>
           <tbody>
-            {guidelinesList.map((guide) => (
+            {list.map((guide) => (
               <tr key={guide.id}>
                 <td className="col-number" data-title="#">
                   {guide.id}
