@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from "react";
 import Container from "../Container";
 import GuideItem from "./GuideItem";
+import SectionForm from "./SectionForm";
 
 const instructionsStepOne =
   "Step One: Let's start by selecting the sections you would like to use.";
 
-const availableSections = [
+const initAvailableSections = [
   {
     id: 0,
     list: 0,
@@ -71,7 +72,13 @@ const availableSections = [
 ];
 
 export default function Guide({ addToGuidelines }) {
+  const [availableSections, setAvailableSections] = useState(
+    initAvailableSections
+  );
   const [selected, setSelected] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const toggleSectionForm = () => setOpen((v) => !v);
 
   const toggleItem = useCallback(
     (v) => {
@@ -80,6 +87,22 @@ export default function Guide({ addToGuidelines }) {
       );
     },
     [setSelected]
+  );
+
+  const handleSaveSection = useCallback(
+    (values) => {
+      setAvailableSections((prev) =>
+        prev.concat({
+          id: availableSections.length,
+          list: availableSections.length,
+          title: values.name,
+          fieldName: "compliance",
+          fieldType: "text",
+          defaultText: values.data,
+        })
+      );
+    },
+    [availableSections, setAvailableSections]
   );
 
   const deleteAll = () => {
@@ -93,7 +116,6 @@ export default function Guide({ addToGuidelines }) {
   return (
     <Container>
       <p>{instructionsStepOne}</p>
-
       <p className="cf pr-large">
         {selected.length ? (
           <a className="btn btn-default" onClick={deleteAll}>
@@ -108,13 +130,14 @@ export default function Guide({ addToGuidelines }) {
           <i className="fa fa-plus" aria-hidden="true" /> Add to your Guidelines
         </a>
       </p>
-
       <p className="cf pr-large">
-        <a className="btn btn-orange">
+        <a className="btn btn-orange" onClick={toggleSectionForm}>
           <i className="fa fa-plus" aria-hidden="true" /> Create New Section
         </a>
       </p>
-
+      {open && (
+        <SectionForm onClose={toggleSectionForm} onSave={handleSaveSection} />
+      )}
       <form action="submit">
         <div className="dl-guidelines-container flex flex-row">
           <div
