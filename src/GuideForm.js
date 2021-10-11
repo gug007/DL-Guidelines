@@ -1,36 +1,49 @@
-import { useState } from "react";
+import { Field, Form } from "react-final-form";
 
 export default function GuideForm({ onSave, onClose }) {
-  const [value, setValue] = useState("");
+  const handleSave = (values) => {
+    onSave(values.name);
+    onClose();
+  };
+
   return (
-    <div className="create-new-guide pa-small pr-large">
-      <form>
-        <div className="form-group input-field">
-          <div className="cf mb-small">
-            <label htmlFor="new-guide-name">Guide Title</label>
-            <a className="btn btn-primary right" onClick={() => onSave(value)}>
-              <i className="fa fa-close" aria-hidden="true" /> Save
-            </a>
-            <a
-              className="btn btn-default right mr-medium"
-              title="Edit"
-              role="button"
-              tabIndex="0"
-              onClick={onClose}
-            >
-              <i className="fa fa-eye" aria-hidden="true" /> Cancel
-            </a>
+    <>
+      <Form
+        onSubmit={handleSave}
+        render={({ handleSubmit }) => (
+          <div className="create-new-guide pa-small pr-large">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group input-field">
+                <div className="cf mb-small">
+                  <label htmlFor="new-guide-name">Guide Title</label>
+                  <button
+                    style={{ margin: 0 }}
+                    className="btn btn-primary right"
+                    type="submit"
+                  >
+                    <i className="fa fa-close" aria-hidden="true" /> Save
+                  </button>
+                  <a
+                    className="btn btn-default right mr-medium"
+                    title="Edit"
+                    role="button"
+                    tabIndex="0"
+                    onClick={onClose}
+                  >
+                    <i className="fa fa-eye" aria-hidden="true" /> Cancel
+                  </a>
+                </div>
+                <Field
+                  name="name"
+                  component="input"
+                  className="form-control input-default"
+                />
+                <input type="text" name="hidden-field" className="hidden" />
+              </div>
+            </form>
           </div>
-          <input
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            type="text"
-            name="new-guide-name"
-            className="form-control input-default"
-          />
-          <input type="text" name="hidden-field" className="hidden" />
-        </div>
-      </form>
-    </div>
+        )}
+      />
+    </>
   );
 }
